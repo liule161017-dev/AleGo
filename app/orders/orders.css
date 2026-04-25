@@ -1,0 +1,65 @@
+/* app/orders/orders.css */
+
+/* 默认深色主题 */
+.orders-theme-wrapper {
+    --bg: #071018; 
+    --panel: #0e1620; 
+    --muted: #97a6b0; 
+    --text: #e9f6fb;
+    --accent-1: #ff67b8; 
+    --accent-2: #12d6c9;
+    --accent-grad: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    --glass: rgba(255, 255, 255, 0.03);
+    --card-shadow: 0 12px 36px rgba(2, 6, 11, 0.6);
+    --border-color: rgba(255, 255, 255, 0.02);
+  }
+  
+  /* 浅色主题切换 */
+  .orders-theme-wrapper[data-theme="light"] {
+    --bg: #f6f7fb; 
+    --panel: #ffffff; 
+    --muted: #55636b; 
+    --text: #071018;
+    --glass: rgba(11, 24, 33, 0.03); 
+    --card-shadow: 0 10px 30px rgba(11, 24, 33, 0.06);
+    --border-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 订单卡片悬浮特效 */
+  .order-row {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+  }
+  .order-row:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(2, 6, 11, 0.55);
+  }
+  .orders-theme-wrapper[data-theme="light"] .order-row:hover {
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 状态标签配色 */
+  .status-pending { background: #3b4752; color: white; }
+  .status-shipped { background: #20435a; color: #dff5fb; }
+  .status-delivered { background: #2d3b28; color: #e9f6ee; }
+  
+  /* 抽屉弹出动画 */
+  .drawer-enter {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  .drawer-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 300ms ease, opacity 300ms ease;
+  }
+  .drawer-exit {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .drawer-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 300ms ease, opacity 300ms ease;
+  }

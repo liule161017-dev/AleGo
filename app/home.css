@@ -1,0 +1,29 @@
+/* app/home.css */
+.home-theme-wrapper {
+    --bg-dark: #05070a;
+    --bg-lighter: #0b0f1a;
+    --accent-pink: #ff4fa6;
+    --accent-cyan: #00e0c6;
+    background: 
+      radial-gradient(1000px 600px at 0% 10%, rgba(255, 79, 166, 0.08), transparent 50%),
+      radial-gradient(1000px 600px at 100% 80%, rgba(0, 224, 198, 0.08), transparent 50%),
+      linear-gradient(180deg, var(--bg-dark), var(--bg-lighter));
+    color: #e7f0f6;
+  }
+  
+  .home-grain {
+    pointer-events: none;
+    position: absolute; inset: 0;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    animation: grain 8s steps(2,end) infinite;
+    z-index: 0;
+  }
+  
+  .text-gradient-primary {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }

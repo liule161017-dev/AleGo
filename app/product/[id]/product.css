@@ -1,0 +1,63 @@
+/* app/product/[id]/product.css */
+
+/* 自定义渐变与阴影变量 */
+:root {
+    --accent-grad: linear-gradient(135deg, #ff4fa6, #00e0c6);
+    --shadow-heavy: 0 10px 30px rgba(2, 6, 10, 0.6);
+    --focus-ring: rgba(0, 224, 198, 0.14);
+  }
+  
+  /* 渐变文字 Hover 效果 */
+  .accent-text-hover {
+    transition: transform 160ms ease, filter 160ms ease;
+  }
+  .accent-text-hover:hover {
+    color: transparent;
+    background-image: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transform: translateY(-3px);
+    filter: brightness(1.05);
+  }
+  
+  /* 官方正品鉴定 Chip 特效 */
+  .auth-chip {
+    background: linear-gradient(90deg, rgba(255, 79, 166, 0.06), rgba(0, 224, 198, 0.04));
+    transition: transform 160ms, box-shadow 260ms;
+  }
+  .auth-chip:hover {
+    transform: translateY(-4px);
+    color: transparent;
+    background-image: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .auth-chip:hover .auth-badge {
+    transform: scale(1.06);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+  }
+  
+  /* 渐变主按钮 */
+  .btn-gradient {
+    background: var(--accent-grad);
+    color: #071018;
+    box-shadow: var(--shadow-heavy);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+  .btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  }
+  
+  /* 收藏心形按钮 */
+  .save-icon {
+    transition: transform 160ms ease, background 260ms ease, border-color 160ms;
+  }
+  .save-icon:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 224, 198, 0.18);
+    background: linear-gradient(135deg, rgba(255, 79, 166, 0.08), rgba(0, 224, 198, 0.06));
+  }
+  .save-icon svg path { transition: stroke 160ms, fill 160ms; }
+  .save-icon.active { background: var(--accent-grad); border-color: rgba(255, 255, 255, 0.04); }
+  .save-icon.active svg path { stroke: #071018; fill: #071018; }

@@ -1,0 +1,86 @@
+/* app/account/account.css */
+
+/* 默认深色主题 */
+.account-theme-wrapper {
+    --bg-main: #0c0d12;
+    --bg-surface: #15161d;
+    --bg-elevated: #1e1f29;
+    --text-primary: #ffffff;
+    --text-secondary: #8b8e98;
+    --border-color: #2a2c38;
+    --input-bg: #0c0d12;
+    
+    --gradient-main: linear-gradient(135deg, #ff2aa6 0%, #00edce 100%);
+    --color-pink: #ff2aa6;
+    --color-cyan: #00edce;
+    
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+  }
+  
+  /* 浅色主题切换 */
+  .account-theme-wrapper[data-theme="light"] {
+    --bg-main: #f9f9fb;
+    --bg-surface: #ffffff;
+    --bg-elevated: #f0f2f5;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --input-bg: #f9f9fb;
+  }
+  
+  /* 表单输入框基准样式 */
+  .form-input {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 0 3px rgba(0, 237, 206, 0.1);
+  }
+  
+  /* 只读状态（伪装成普通文本） */
+  .form-input.readonly-state {
+    background: transparent !important;
+    border-color: transparent !important;
+    padding-left: 0 !important;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    pointer-events: none;
+  }
+  
+  /* 选项卡激活下划线 */
+  .tab-btn {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+  }
+  .tab-btn:hover { color: var(--text-primary); }
+  .tab-btn.active { color: var(--text-primary); }
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-main);
+    box-shadow: 0 -2px 15px rgba(0, 237, 206, 0.4);
+  }
+  
+  /* 地址卡片悬浮 */
+  .address-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+  }
+  .address-card:hover {
+    border-color: var(--color-pink);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .account-theme-wrapper[data-theme="dark"] .address-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
