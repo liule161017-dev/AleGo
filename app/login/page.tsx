@@ -53,7 +53,7 @@ export default function LoginPage() {
         <Footer />
       </div>
       
-      <FloatingConsult />
+      {/* <FloatingConsult /> */}
     </div>
   );
 }

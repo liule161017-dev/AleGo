@@ -1,8 +1,9 @@
 // app/components/AboutUs.tsx
+import Link from 'next/link';
 
 export default function AboutUs() {
   // ⚠️ 在这里替换为你的真实链接
-  const TAOBAO_LINK = "https://taobao.com"; // 你的淘宝店铺主页链接
+  const TAOBAO_LINK = "https://shop393352926.world.taobao.com/shop/view_shop.htm?appUid=RAzN8HWTJAdGjT6G8TxkddgKiHPHuiP8gGevVR44G4tQWNucCnp&spm=a21n57.1.hoverItem.3"; // 你的淘宝店铺主页链接
   const WHATSAPP_LINK = "https://wa.me/1234567890?text=Hi,%20I'd%20like%20to%20know%20more%20about%20ALeToys."; // 你的 WhatsApp 链接
 
   return (
@@ -40,14 +41,9 @@ export default function AboutUs() {
           </a>
           
           {/* 跳转到 WhatsApp */}
-          <a 
-            href={WHATSAPP_LINK} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-8 py-4 w-full sm:w-auto rounded-xl font-bold text-white border border-white/20 hover:bg-white/10 transition-all uppercase tracking-widest text-sm text-center"
-          >
-            Chat on WhatsApp
-          </a>
+          <Link href="/about" className="px-8 py-4 w-full sm:w-auto rounded-xl font-bold text-white border border-white/20 hover:bg-white/10 transition-all uppercase tracking-widest text-sm">
+          Discover Our Story
+          </Link>
         </div>
       </div>
     </section>

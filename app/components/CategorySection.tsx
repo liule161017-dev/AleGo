@@ -6,6 +6,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Loader2 } from 'lucide-react';
 
+// 图片基础路径前缀与智能解析函数
+const SUPABASE_IMG_BASE = "https://kmcccsvgdmmnituxxaej.supabase.co/storage/v1/object/public/product-images/";
+
+const getImageUrl = (imageValue: string | null | undefined, sku: string, index = 1) => {
+  if (imageValue && imageValue.startsWith('http')) return imageValue;
+  if (imageValue) return `${SUPABASE_IMG_BASE}${imageValue}`;
+  const safeSku = sku || 'default';
+  return `${SUPABASE_IMG_BASE}${safeSku}-0${index}.jpg`;
+};
+
 interface CategoryProps {
   title: string;
   type: 'in-stock' | 'pre-order';
@@ -19,17 +29,14 @@ export default function CategorySection({ title, type }: CategoryProps) {
     const fetchCategoryProducts = async () => {
       setLoading(true);
       
-      // 映射前端 type 到数据库 status
       const dbStatus = type === 'in-stock' ? 'In Stock' : 'Pre-order';
 
       const { data, error } = await supabase
         .from('products')
         .select('*')
         .eq('status', dbStatus)
-        .limit(4) // 每组只展示前4个
+        .limit(4) 
         .order('created_at', { ascending: false });
-
-  
 
       if (!error) {
         setProducts(data || []);
@@ -40,7 +47,6 @@ export default function CategorySection({ title, type }: CategoryProps) {
     fetchCategoryProducts();
   }, [type]);
 
-  // 如果该分类下没有商品，则不渲染此板块
   if (!loading && products.length === 0) return null;
 
   return (
@@ -68,9 +74,9 @@ export default function CategorySection({ title, type }: CategoryProps) {
           {products.map((item) => (
             <Link href={`/product/${item.id}`} key={item.id} className="group cursor-pointer">
               <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-[#0a0b0c] border border-white/5 group-hover:border-[#00edce]/50 transition-colors shadow-lg">
-                {/* 这里的图片使用数据库 images 数组的第一项 */}
+                {/* 🌟 核心修改：接入智能图片解析 */}
                 <Image 
-                  src={item.images?.[0] || 'https://via.placeholder.com/400x500'} 
+                  src={getImageUrl(item.images?.[0], item.sku, 1)} 
                   alt={item.title} 
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" 

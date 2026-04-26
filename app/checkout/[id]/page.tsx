@@ -35,7 +35,7 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
   const [submittingAddress, setSubmittingAddress] = useState(false);
 
   // ⚠️ 你的真实私域联系方式配置
-  const WECHAT_QR = "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=400"; // 微信二维码
+  const WECHAT_QR = "https://kmcccsvgdmmnituxxaej.supabase.co/storage/v1/object/public/product-images/wechat.jpg"; // 微信二维码
   const WHATSAPP_LINK = "https://wa.me/1234567890?text=Hi,%20I'm%20interested%20in%20acquiring%20a%20masterpiece."; // 换成你的 WhatsApp 链接
   const INSTAGRAM_LINK = "https://instagram.com/your_official_account"; // 换成你的 IG 链接
 

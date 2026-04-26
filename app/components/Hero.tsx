@@ -8,9 +8,10 @@ export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   const slides = [
-    "https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1920&fit=crop",
+    "https://kmcccsvgdmmnituxxaej.supabase.co/storage/v1/object/public/product-images/cdef1a6152b65e0f8379c856bd04c78a.jpg",
+    "https://kmcccsvgdmmnituxxaej.supabase.co/storage/v1/object/public/product-images/DS-ORNSTEIN-RS-14-04.jpg",  
     "https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?q=80&w=1920&fit=crop",
-    "https://images.unsplash.com/photo-1635863138275-d9b33299680b?q=80&w=1920&fit=crop"
+    "https://images.unsplash.com/photo-1635863138275-d9b33299680b?q=80&w=1920&fit=crop",
   ];
 
   useEffect(() => {

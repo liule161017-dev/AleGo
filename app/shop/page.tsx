@@ -4,10 +4,20 @@ import { useState, useEffect, useMemo, Suspense } from 'react';
 import { supabase } from '@/utils/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation'; // ⚠️ 核心：引入路由参数钩子
-import { Loader2, Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react'; // 引入 X 图标
+import { useSearchParams } from 'next/navigation'; 
+import { Loader2, Search, SlidersHorizontal, ChevronDown, X } from 'lucide-react'; 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
+// 图片基础路径前缀与智能解析函数
+const SUPABASE_IMG_BASE = "https://kmcccsvgdmmnituxxaej.supabase.co/storage/v1/object/public/product-images/";
+
+const getImageUrl = (imageValue: string | null | undefined, sku: string, index = 1) => {
+  if (imageValue && imageValue.startsWith('http')) return imageValue;
+  if (imageValue) return `${SUPABASE_IMG_BASE}${imageValue}`;
+  const safeSku = sku || 'default';
+  return `${SUPABASE_IMG_BASE}${safeSku}-0${index}.jpg`;
+};
 
 // 核心内容组件 (必须抽离出来以配合 Suspense)
 function ShopContent() {
@@ -20,12 +30,12 @@ function ShopContent() {
 
   // --- 过滤与排序状态 ---
   const [filter, setFilter] = useState('All'); 
-  const [searchQuery, setSearchQuery] = useState(urlQuery); // ⚠️ 初始值优先使用 URL 里的搜索词
+  const [searchQuery, setSearchQuery] = useState(urlQuery); 
   const [sortOption, setSortOption] = useState('newest'); 
   const [minPrice, setMinPrice] = useState<string>(''); 
   const [maxPrice, setMaxPrice] = useState<string>(''); 
 
-  // ⚠️ 监听 URL 变化，同步更新搜索框状态
+  // 监听 URL 变化，同步更新搜索框状态
   useEffect(() => {
     if (searchParams.has('q')) {
       setSearchQuery(searchParams.get('q') || '');
@@ -51,12 +61,10 @@ function ShopContent() {
   const filteredAndSortedProducts = useMemo(() => {
     let result = [...products];
 
-    // 1. 状态过滤 (Status)
     if (filter !== 'All') {
       result = result.filter(p => p.status === filter);
     }
 
-    // 2. 关键词搜索 (Title or Artist)
     if (searchQuery.trim() !== '') {
       const query = searchQuery.toLowerCase();
       result = result.filter(p => 
@@ -65,17 +73,15 @@ function ShopContent() {
       );
     }
 
-    // 3. 价格区间过滤 (Price Range)
     const min = parseFloat(minPrice);
     const max = parseFloat(maxPrice);
     if (!isNaN(min)) result = result.filter(p => p.price >= min);
     if (!isNaN(max)) result = result.filter(p => p.price <= max);
 
-    // 4. 排序 (Sorting)
     result.sort((a, b) => {
       if (sortOption === 'price-asc') return a.price - b.price;
       if (sortOption === 'price-desc') return b.price - a.price;
-      if (sortOption === 'sales') return (b.sales_count || 0) - (a.sales_count || 0); // 畅销优先
+      if (sortOption === 'sales') return (b.sales_count || 0) - (a.sales_count || 0); 
       return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
     });
 
@@ -118,7 +124,6 @@ function ShopContent() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#05070a] border border-white/10 rounded-xl py-3 pl-12 pr-10 text-sm outline-none focus:border-[#00edce]/50 text-white transition-colors"
           />
-          {/* 一键清除搜索 */}
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery('')}
@@ -131,7 +136,6 @@ function ShopContent() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto items-center">
-          {/* 价格区间 */}
           <div className="flex items-center gap-2 w-full sm:w-auto bg-[#05070a] border border-white/10 rounded-xl px-4 py-1.5">
             <span className="text-gray-500 text-sm font-bold">$</span>
             <input 
@@ -145,7 +149,6 @@ function ShopContent() {
             />
           </div>
 
-          {/* 排序方式 */}
           <div className="relative w-full sm:w-auto">
             <select 
               value={sortOption}
@@ -162,7 +165,6 @@ function ShopContent() {
         </div>
       </div>
 
-      {/* 搜索提示条 */}
       {searchQuery && (
         <div className="mb-6 flex justify-between items-center text-sm font-bold bg-[#00edce]/5 border border-[#00edce]/20 px-4 py-3 rounded-xl text-[#00edce]">
           <span>Showing results for: "{searchQuery}"</span>
@@ -193,7 +195,13 @@ function ShopContent() {
           {filteredAndSortedProducts.map((product) => (
             <Link href={`/product/${product.id}`} key={product.id} className="group cursor-pointer flex flex-col">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0b0c] transition-all group-hover:border-[#00edce]/30">
-                <Image src={product.images?.[0] || 'https://via.placeholder.com/800'} alt={product.title} fill className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                {/* 🌟 核心修改：接入智能图片解析 */}
+                <Image 
+                  src={getImageUrl(product.images?.[0], product.sku, 1)} 
+                  alt={product.title} 
+                  fill 
+                  className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
+                />
                 
                 <div className={`absolute top-4 left-4 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest backdrop-blur-md border ${
                   product.status === 'In Stock' ? 'bg-[#00edce]/10 border-[#00edce]/30 text-[#00edce]' : 'bg-[#ff4fa6]/10 border-[#ff4fa6]/30 text-[#ff4fa6]'
@@ -218,7 +226,6 @@ function ShopContent() {
   );
 }
 
-// ⚠️ 页面主入口，包裹 Suspense
 export default function ShopPage() {
   return (
     <div className="bg-[#05070a] min-h-screen text-white flex flex-col">

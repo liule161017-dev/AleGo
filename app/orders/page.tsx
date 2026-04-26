@@ -117,13 +117,13 @@ export default function OrdersPage() {
       <Navbar />
 
       {/* 主题切换悬浮球 */}
-      <button 
+      {/* <button 
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         className="fixed right-6 bottom-24 z-[90] w-12 h-12 rounded-full border flex items-center justify-center text-xl shadow-lg transition-transform hover:scale-110"
         style={{ background: 'var(--glass)', borderColor: 'var(--border-color)', color: 'var(--text)' }}
       >
         {theme === 'dark' ? '☀️' : '☾'}
-      </button>
+      </button> */}
 
       <main className="flex-grow max-w-[1150px] mx-auto px-4 py-28 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
         

@@ -39,7 +39,7 @@ export default function Navbar() {
           <li><Link href="/" className="hover:text-[#6ee7f2] hover:-translate-y-0.5 transition-all block">Home</Link></li>
           <li><Link href="/shop" className="hover:text-[#6ee7f2] hover:-translate-y-0.5 transition-all block">Category</Link></li>
           <li><Link href="/account" className="hover:text-[#6ee7f2] hover:-translate-y-0.5 transition-all block">Profile</Link></li>
-          <li><Link href="/wishlist" className="hover:text-[#6ee7f2] hover:-translate-y-0.5 transition-all block">Wishlist</Link></li>
+          <li><Link href="/about" className="hover:text-[#6ee7f2] hover:-translate-y-0.5 transition-all block">AboutUs</Link></li>
         </ul>
       </nav>
 

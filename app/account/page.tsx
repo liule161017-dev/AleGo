@@ -58,13 +58,13 @@ export default function AccountPage() {
 
       <div className="flex-grow">
         {/* 悬浮主题按钮 */}
-        <button 
+        {/* <button 
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="fixed right-6 bottom-24 z-[90] w-12 h-12 rounded-full border flex items-center justify-center text-xl shadow-lg transition-transform hover:scale-110"
           style={{ background: 'var(--bg-elevated)', borderColor: 'var(--border-color)', color: 'var(--text-primary)' }}
         >
           {theme === 'dark' ? '☀️' : '☾'}
-        </button>
+        </button> */}
 
         {/* 欢迎头部区 */}
         <section className="text-center pt-24 pb-8 px-5 max-w-3xl mx-auto">

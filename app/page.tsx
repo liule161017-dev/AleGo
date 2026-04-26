@@ -32,7 +32,7 @@ export default function Home() {
         <Footer />
       </div>
       
-      <FloatingConsult />
+      {/* <FloatingConsult /> */}
     </main>
   );
 }

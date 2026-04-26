@@ -6,13 +6,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Loader2 } from 'lucide-react';
 
+// 图片基础路径前缀与智能解析函数
+const SUPABASE_IMG_BASE = "https://kmcccsvgdmmnituxxaej.supabase.co/storage/v1/object/public/product-images/";
+
+const getImageUrl = (imageValue: string | null | undefined, sku: string, index = 1) => {
+  if (imageValue && imageValue.startsWith('http')) return imageValue;
+  if (imageValue) return `${SUPABASE_IMG_BASE}${imageValue}`;
+  const safeSku = sku || 'default';
+  return `${SUPABASE_IMG_BASE}${safeSku}-0${index}.jpg`;
+};
+
 export default function BestSellers() {
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBestSellers = async () => {
-      // 抓取销量最高的前3个
       const { data } = await supabase
         .from('products')
         .select('*')
@@ -25,7 +34,7 @@ export default function BestSellers() {
     fetchBestSellers();
   }, []);
 
-  if (loading) return null; // 首页加载中可以保持静默，或者返回一个 Skeleton
+  if (loading) return null; 
 
   return (
     <section className="py-24 px-6 relative z-10">
@@ -40,8 +49,9 @@ export default function BestSellers() {
             <div className="w-full md:w-1/2 relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-[#ff4fa6]/10 to-[#00edce]/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0b0c] shadow-2xl aspect-video md:aspect-[4/3]">
+                {/* 🌟 核心修改：接入智能图片解析 */}
                 <Image 
-                  src={item.images?.[0]} 
+                  src={getImageUrl(item.images?.[0], item.sku, 1)} 
                   alt={item.title} 
                   fill 
                   className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
