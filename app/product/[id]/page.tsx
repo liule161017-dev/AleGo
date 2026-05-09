@@ -338,14 +338,14 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   <span className="absolute left-1/2 -top-2.5 -translate-x-1/2 bg-[#0f1113] px-3 text-xs font-bold text-gray-500 uppercase tracking-widest">OR</span>
                 </div>
 
-                <a
+                {/* <a
                   href={product.taobao_link || DEFAULT_TAOBAO_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold bg-gradient-to-r from-[#ff5000] to-[#ff8c00] text-white uppercase tracking-widest shadow-lg hover:scale-[1.02] transition-transform"
                 >
                   <ShoppingBag size={18} /> Buy on Taobao (淘宝官方店)
-                </a>
+                </a> */}
               </div>
             )}
           </div>

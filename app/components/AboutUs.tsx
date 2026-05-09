@@ -31,14 +31,14 @@ export default function AboutUs() {
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           {/* 跳转到淘宝官网 */}
-          <a 
+          {/* <a 
             href={TAOBAO_LINK} 
             target="_blank" 
             rel="noopener noreferrer"
             className="px-8 py-4 w-full sm:w-auto rounded-xl font-bold text-[#071018] shadow-[0_0_20px_rgba(0,224,198,0.3)] hover:scale-105 transition-all bg-gradient-to-r from-[#ff4fa6] to-[#00e0c6] uppercase tracking-widest text-sm text-center"
           >
             Visit Taobao Store
-          </a>
+          </a> */}
           
           {/* 跳转到 WhatsApp */}
           <Link href="/about" className="px-8 py-4 w-full sm:w-auto rounded-xl font-bold text-white border border-white/20 hover:bg-white/10 transition-all uppercase tracking-widest text-sm">
