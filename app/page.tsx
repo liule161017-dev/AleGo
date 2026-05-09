@@ -8,6 +8,7 @@ import BestSellers from './components/BestSellers';
 import Reviews from './components/Reviews';
 import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
+import FAQSection from './components/FAQSection';
 import FloatingConsult from './components/FloatingConsult';
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
         
         <BestSellers />
         <Reviews />
+        <FAQSection />
         <AboutUs />
         <Footer />
       </div>

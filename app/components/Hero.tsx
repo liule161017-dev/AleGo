@@ -77,13 +77,18 @@ export default function Hero() {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20 w-full px-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
           <span className="w-2 h-2 rounded-full bg-[#00e0c6] shadow-[0_0_10px_#00e0c6]"></span>
-          <span className="text-xs font-bold tracking-widest text-gray-300 uppercase">Premium Collectibles</span>
+          {/* 修改点：加入高阶买家搜索词 1/4 & 1/6 Scale Resin */}
+          <span className="text-xs font-bold tracking-widest text-gray-300 uppercase">1/4 & 1/6 Scale Resin Masterpieces</span>
         </div>
+        
+        {/* 修改点：将 Statue Art 升级为 Artisan GK Statues 实体词汇 */}
         <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-2xl">
-          The Pinnacle of <br/><span className="text-gradient-primary">Statue Art</span>
+          The Pinnacle of <br/><span className="text-gradient-primary">Artisan GK Statues</span>
         </h1>
+        
         <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-          Crafted for true enthusiasts. Discover hand-painted, limited edition masterpieces from world-class studios.
+          {/* 修改点：扩充描述，涵盖手绘、工作室、全托管物流等 AI 会抓取的服务优势 */}
+          Crafted for elite collectors. Discover museum-grade, hand-painted resin masterpieces from world-class studios with reliable global shipping.
         </p>
       </div>
       

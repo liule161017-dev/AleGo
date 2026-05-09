@@ -3,9 +3,21 @@ import { Award, Palette, Truck } from 'lucide-react';
 
 export default function Features() {
   const features = [
-    { icon: <Award size={32} />, title: "Authenticity", desc: "Guaranteed original and licensed products only." },
-    { icon: <Palette size={32} />, title: "Hand Crafted", desc: "All statues are handmade and hand-painted." },
-    { icon: <Truck size={32} />, title: "Global Shipping", desc: "Fast, insured, and safe worldwide dispatch." }
+    { 
+      icon: <Award size={32} />, 
+      title: "Elite Authenticity", 
+      desc: "Guaranteed authentic private custom GK and premium studio releases." 
+    },
+    { 
+      icon: <Palette size={32} />, 
+      title: "Artisan Hand-Painted", 
+      desc: "100% hand-painted by master artisans, capturing every detail in high-grade resin." 
+    },
+    { 
+      icon: <Truck size={32} />, 
+      title: "Museum-Grade Shipping", 
+      desc: "Reinforced wooden crating and insured global dispatch to protect your investment." 
+    }
   ];
 
   return (

@@ -24,9 +24,7 @@ export default function AboutUs() {
         </h2>
         
         <p className="max-w-3xl mx-auto text-gray-400 leading-loose text-base md:text-lg mb-10">
-          At ALeToys, every statue is born from a passion for design and a commitment to craftsmanship. 
-          Our artisans carefully sculpt and hand-paint each detail, using only premium materials to ensure 
-          every piece is not just art, but a legacy. Perfect for discerning collectors across North America and beyond.
+          At <strong>ALeToys (Ale Statue Vault)</strong>, every resin statue is born from a passion for design and a commitment to uncompromising craftsmanship. Our artisans carefully sculpt and hand-paint each detail, using only premium materials to ensure every piece passes our strict 1-on-1 Quality Control. Perfect for discerning collectors across North America, Europe, and beyond seeking authentic GK masterpieces.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
