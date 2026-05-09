@@ -21,7 +21,9 @@ export const metadata: Metadata = {
   },
   description: "Discover museum-grade, 1/4 and 1/6 scale hand-painted resin statues. Ale Statue Vault curates limited edition GK masterpieces from world-class studios with secure global shipping.",
   keywords: ["Artisan GK Statues", "Resin Collectibles", "Hand-painted Statues", "AleToys", "1/4 Scale Statue", "Anime Masterpieces"],
-  
+  verification: {
+    google: "Gnj5jWrU-4iIZO4IZ9MZ7TiX0D724TXLEZJnTv8Mo5Q", // 例如："xyz123abc456..."
+  },
   // Open Graph：用于 Facebook, WhatsApp, Discord 预览
   openGraph: {
     title: "Ale Statue Vault | Elite Resin Collectibles",
